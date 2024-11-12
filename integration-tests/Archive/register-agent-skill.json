@@ -1,0 +1,8 @@
+{
+"bldrUrl": "https://bldr.habitat.sh",
+"bldrChannel": "stable",
+"bldrAuthToken": "",
+"nodeCheckinInterval": 3600,
+"updateSkillMetadataInterval": 3600,
+"logLevel": " debug"
+}

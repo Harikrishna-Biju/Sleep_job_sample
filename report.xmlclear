@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites><testsuite name="integration-tests.Archive.test_sleep_job_automate" tests="5" errors="0" failures="2" skipped="0" time="9.726999999999999"><testcase name="test_install_cli" classname="integration-tests.Archive.test_sleep_job_automate" time="0.023" /><testcase name="test_skill_agent" classname="integration-tests.Archive.test_sleep_job_automate" time="1.251" /><testcase name="test_install_skills" classname="integration-tests.Archive.test_sleep_job_automate" time="7.373" /><testcase name="test_job" classname="integration-tests.Archive.test_sleep_job_automate" time="1.064"><failure message="KeyError: 'item'">def test_job():
+        #21-creating a job(A)and getting jobId(A)
+        job_run=subprocess.run(['chef-courier-cli','scheduler','jobs','add-job','--body-file','integration-tests/Archive/create-job-simple.json'],capture_output=True)
+        assert job_run.returncode==0
+        res5=json.loads(job_run.stdout)
+        print(res5)
+        global JOB_ID
+&gt;       JOB_ID=res5["item"]["id"]
+E       KeyError: 'item'
+
+integration-tests/Archive/test_sleep_job_automate.py:313: KeyError</failure></testcase><testcase name="test_get_instance" classname="integration-tests.Archive.test_sleep_job_automate" time="0.008"><failure message="json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)">def test_get_instance():
+        result1=subprocess.run(['chef-courier-cli','state','instance','list-all','--job-id',JOB_ID],capture_output=True)
+&gt;       res6=json.loads(result1.stdout)
+
+integration-tests/Archive/test_sleep_job_automate.py:320: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py:346: in loads
+    return _default_decoder.decode(s)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/decoder.py:344: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;json.decoder.JSONDecoder object at 0x105268440&gt;, s = 'Error:  invalid UUID length: 0\n', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+&gt;           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/decoder.py:362: JSONDecodeError</failure></testcase></testsuite></testsuites>

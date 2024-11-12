@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testsuite name="integration-tests.Archive.test_sleep_job_automate" tests="9" errors="0" failures="0" skipped="0" time="53.779">
+		<testcase name="test_install_cli" classname="integration-tests.Archive.test_sleep_job_automate" time="0.15" />
+		<testcase name="test_skill_agent" classname="integration-tests.Archive.test_sleep_job_automate" time="3.052" />
+		<testcase name="test_install_skills" classname="integration-tests.Archive.test_sleep_job_automate" time="7.843" />
+		<testcase name="test_skill_assembly" classname="integration-tests.Archive.test_sleep_job_automate" time="1.105" />
+		<testcase name="test_node_override_settings" classname="integration-tests.Archive.test_sleep_job_automate" time="1.155" />
+		<testcase name="test_cohort" classname="integration-tests.Archive.test_sleep_job_automate" time="1.075" />
+		<testcase name="test_Node_enroll" classname="integration-tests.Archive.test_sleep_job_automate" time="1.203" />
+		<testcase name="test_job" classname="integration-tests.Archive.test_sleep_job_automate" time="31.16" />
+		<testcase name="test_get_instance" classname="integration-tests.Archive.test_sleep_job_automate" time="3.518" />
+	</testsuite>
+</testsuites>

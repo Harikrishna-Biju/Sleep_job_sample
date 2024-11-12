@@ -1,0 +1,69 @@
+{
+    "name": "a simple job to perform one action20",
+    "description": "Perform a simple shell command on specific nodes to understand the fundamentals of Courier jobs",
+    "scheduleRule": "immediate",
+    "exceptionRules": [],
+    "target": {
+        "executionType": "sequential",
+        "groups": [
+            {
+                "timeoutSeconds": 240,
+                "batchSize": {},
+                "distributionMethod": "batching",
+                "successCriteria": [
+                    {
+                        "numRuns": {
+                            "type": "percent",
+                            "value": 100
+                        },
+                        "status": "success"
+                    }
+                ],
+                "nodeListType": "nodes",
+                "nodeIdentifiers": [
+                    "6c09b953-76c2-4778-8389-a30ae7a02911"
+                ]
+            }
+        ]
+    },
+    "actions": {
+        "accessMode": "agent",
+        "steps": [
+            {
+                "name": "step to sleep",
+                "interpreter": {
+                    "skill": {
+                        "minVersion": "1.0.0"
+                    },
+                    "name": "chef-platform/shell-interpreter"
+                },
+                "command": {
+                    "linux": [
+                        "sleep 10"
+                    ],
+                    "windows": [
+                        "timeout 10"
+                    ]
+                },
+                "inputs": {},
+                "expectedInputs": {},
+                "outputFieldRules": {},
+                "retryCount": 2,
+                "failureBehavior": {
+                    "action": "retryThenFail",
+                    "retryBackoffStrategy": {
+                        "type": "linear",
+                        "delaySeconds": 1,
+                        "arguments": [
+                            1,
+                            3,
+                            5
+                        ]
+                    }
+                },
+                "limits": {},
+                "conditions": []
+            }
+        ]
+    }
+}
